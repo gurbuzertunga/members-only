@@ -7,6 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
+        <td><%= post.user.username %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,3 +29,19 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+
+<% if user_signed_in? %>
+              <p class="control">
+                <%= link_to current_user.username, edit_user_registration_path, class: "button is-info mt-2 mr-2" %>
+              </p>
+              <p>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "button is-info mt-2 mr-2" %>
+              </p>
+            <% else %>
+						<p class="control">
+              <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info is-inverted my-2 mr-2" %>
+            </p>
+            <p class="control">
+              <%= link_to 'Sign In', new_user_session_path, class: "button is-info is-inverted my-2 mr-2" %>
+            </p>
+            <% end %>
