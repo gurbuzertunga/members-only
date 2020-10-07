@@ -15,18 +15,6 @@
                     <% end %>
                     <p><%= post.body %></p>
                 </div>
-                <% if user_signed_in?%>
-                    <nav class="level">
-                    <div class="level-left is-mobile">
-                            <span class="icon mr-5"><%= link_to 'Show', post %></span>
-                        
-                            <span class="icon mr-5"><%= link_to 'Edit', edit_post_path(post) %></span>
-                       
-                            <span class="icon mr-5"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-                      
-                    </div>
-                    </nav>
-                <% end %>
            </div>
         </article>
     </div>  
