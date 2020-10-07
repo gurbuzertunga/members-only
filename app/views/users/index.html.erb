@@ -1,34 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="columns is-centered">
+<div class="column is-half"> 
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h1 class="my-5">Users</h1>
+    
+     
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.password %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_registration_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+     <div class="box">
+        <article class="media">
+            <div class="media-content">
+                <div class="content">
+                    <strong><%= user.username %></strong><br/>
+                    <strong><%= user.email %></strong><br/>
+                </div>
+                <% if user_signed_in?%>
+                    <nav class="level">
+                    <div class="level-left is-mobile">
+                            <span class="icon mr-5"><%= link_to 'Show', user %></span>
+                        
+                            <span class="icon mr-5"><%= link_to 'Edit', edit_user_registration_path(user) %></span>
+                       
+                            <span class="icon mr-5"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+                      
+                    </div>
+                    </nav>
+                <% end %>
+           </div>
+        </article>
+    </div>  
     <% end %>
-  </tbody>
-</table>
 
-<br>
-              
+
 <%= link_to 'New User', new_user_registration_path %>
-
-<%= link_to 'Log out', destroy_user_session_path %>
+</div>
+</div>
 
